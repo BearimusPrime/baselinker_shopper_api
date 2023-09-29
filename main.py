@@ -3,13 +3,15 @@ import json
 import pandas
 
 def get_fresh_token():
+    #shop url. Here is sample
     url = "https://sklep312597.shoparena.pl/webapi/rest/auth"
 
     payload = {}
     headers = {
-        'client_id': 'admin',
-        'client_secret': 'Omegaplast2020!',
-        'Authorization': 'Basic YWRtaW46T21lZ2FwbGFzdDIwMjAh'
+        #credentials
+        'client_id': '',
+        'client_secret': '!',
+        'Authorization': 'Basic '
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
@@ -53,7 +55,8 @@ def update_image(id,token,link):
     print(response.text)
 
 df = pandas.read_csv('produkty.csv')
-toki = 'ebc52b6753049c434237221632c96891db31e09e'
+#optionally use toki for a once generated token.
+#toki = ''
 for i in range(1200,1230):
     tekst = json.loads(get_product(toki,i))
     print("Teraz artykul numer " + str(i))
